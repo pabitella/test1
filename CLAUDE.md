@@ -33,6 +33,9 @@ pnpm check        # Biome lint + format, auto-fix (use before committing)
 pnpm typecheck    # tsc --noEmit
 pnpm test         # Vitest unit tests (watch mode)
 pnpm test:e2e     # Playwright e2e
+pnpm db:generate  # generate migration from schema changes
+pnpm db:migrate   # apply migrations
+pnpm db:studio    # Drizzle Studio (local DB browser)
 
 # Run a single test file
 pnpm test src/path/to/file.test.tsx
@@ -48,7 +51,8 @@ src/
     page.tsx            # Landing page (/)
   components/           # Shared React components (Header, Footer, …)
   lib/
-    db.ts               # Neon sql tagged-template client
+    db.ts               # Drizzle client (neon-http driver)
+    schema.ts           # Drizzle table definitions
 e2e/                    # Playwright e2e tests (scaffold, empty)
 public/                 # Static assets
 AGENTS.md               # Next.js AI agent guidance (generated, do not edit)
