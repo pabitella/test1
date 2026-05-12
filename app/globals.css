@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Design tokens — override here with values from Figma */
+  --color-brand: oklch(55% 0.2 250);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
