@@ -41,7 +41,18 @@ pnpm test src/path/to/file.test.tsx
 ## Directory layout
 
 ```
-<populated after scaffold>
+src/
+  app/                  # Next.js App Router — pages, layouts, route handlers
+    globals.css         # Tailwind v4 entry + @theme design tokens
+    layout.tsx          # Root layout — Geist font, Vercel Analytics
+    page.tsx            # Landing page (/)
+  components/           # Shared React components
+  lib/
+    db.ts               # Neon sql tagged-template client
+e2e/                    # Playwright e2e tests (scaffold, empty)
+public/                 # Static assets
+AGENTS.md               # Next.js AI agent guidance (generated, do not edit)
+SPEC.md                 # Product + design contract — read before implementing
 ```
 
 ## Conventions
@@ -56,7 +67,7 @@ pnpm test src/path/to/file.test.tsx
 - Use Tailwind utility classes directly on JSX. Avoid inline `style={}` unless animating dynamic values.
 
 **Imports**
-- Alias `@/*` maps to the repo root. Use it for all cross-directory imports (`@/lib/db`, `@/components/Button`).
+- Alias `@/*` maps to `src/`. Use it for all cross-directory imports (`@/lib/db`, `@/components/Button`).
 
 **Commits**
 - Conventional Commits: `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`. Keep subject ≤72 chars.
