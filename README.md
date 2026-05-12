@@ -22,7 +22,29 @@ pnpm db:studio     # open Drizzle Studio (local DB browser)
 
 ## Deploy
 
-### Vercel (primary)
+### Render (primary)
+
+The repo includes `render.yaml` for infrastructure-as-code deployment.
+
+1. Push this repo to GitHub.
+2. Go to <https://dashboard.render.com/new/web> → **Connect a repository** → select this repo → Render picks up `render.yaml` automatically.
+3. Under **Environment Variables**, add:
+
+   | Variable | Value |
+   |---|---|
+   | `DATABASE_URL` | Neon pooled connection string (from Neon dashboard → Connection Details → Pooled) |
+
+4. Click **Create Web Service**. Live at <https://test1-fxz.onrender.com>.
+
+Subsequent pushes to `main` deploy automatically. PRs do **not** get automatic preview URLs on Render free tier (unlike Vercel).
+
+> **Note:** Render runs Next.js as a standard Node.js process (`next start`), not a native serverless runtime. Cold starts on the free tier can be slow after inactivity.
+
+### Vercel (documented, not implemented)
+
+Zero-config Next.js support — connects at <https://vercel.com/new>. Runs the Next.js runtime natively; PRs get preview URLs automatically. Prefer Vercel if preview deployments matter.
+
+### Netlify (documented, not implemented)
 
 1. Push this repo to GitHub.
 2. Go to <https://vercel.com/new> → import the repo → Vercel auto-detects Next.js (zero config needed, no `vercel.json` required).

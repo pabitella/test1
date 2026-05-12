@@ -92,16 +92,17 @@ SPEC.md                 # Product + design contract — read before implementing
 
 ## Deployment
 
-**Target:** Vercel (auto-deploy on push to `main`).
+**Target:** Render — <https://test1-fxz.onrender.com>. Config in `render.yaml`; auto-deploys on push to `main`.
 
-**Required env vars** — set in Vercel project settings for each environment:
+**Required env vars** — set in Render dashboard (not committed):
 
 | Var | Used for |
 |---|---|
-| `DATABASE_URL` | Neon Postgres connection string (pooled for preview, direct for production) |
+| `DATABASE_URL` | Neon Postgres pooled connection string |
 
-**Preview vs production**
-- Vercel preview deployments use the same `DATABASE_URL` unless you configure a separate Neon branch. Treat preview as staging — prefer a Neon branch database for previews to avoid touching production data.
+**Render vs Vercel**
+- Render runs `next start` as a persistent Node process — not serverless. No native preview URLs on free tier.
+- Vercel runs the Next.js runtime natively and provides PR preview URLs. Swap target if that matters.
 
 ---
 
