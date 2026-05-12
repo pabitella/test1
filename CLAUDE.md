@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Marketing landing page for test1, targeting internal users. Backed by Neon Postgres; deployed to Vercel.
+Landing page built around the brand message *"suppression of expression leads to depression"* — a mental-health / self-expression platform targeting internal users. Backed by Neon Postgres; deployed to Vercel.
 
 ## Stack
 
