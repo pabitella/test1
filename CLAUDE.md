@@ -46,7 +46,7 @@ src/
     globals.css         # Tailwind v4 entry + @theme design tokens
     layout.tsx          # Root layout — Geist font, Vercel Analytics
     page.tsx            # Landing page (/)
-  components/           # Shared React components
+  components/           # Shared React components (Header, Footer, …)
   lib/
     db.ts               # Neon sql tagged-template client
 e2e/                    # Playwright e2e tests (scaffold, empty)
