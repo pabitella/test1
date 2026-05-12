@@ -133,7 +133,7 @@ The image uses a bold, tightly-set sans-serif for the tagline. Use **Inter** or 
 
 **Database:** Neon Postgres via `lib/db.ts` (`sql` tagged-template).
 **Auth:** None in Phase 1.
-**External services:** None in Phase 1.
+**Analytics:** Required in Phase 1. Use **Vercel Analytics** (`@vercel/analytics`) — zero-config on Vercel, no separate account needed. Add `<Analytics />` to the root layout.
 
 ---
 
@@ -151,15 +151,18 @@ The image uses a bold, tightly-set sans-serif for the tagline. Use **Inter** or 
 ### `/api/interest`
 - [ ] `POST { email }` valid → `201 { id }`.
 - [ ] `POST` missing/malformed email → `422 { error: "invalid email" }`.
-- [ ] Duplicate email → upsert silently (do-nothing on conflict). **[Open question #1]**
+- [ ] Duplicate email → `INSERT … ON CONFLICT (email) DO NOTHING`; always return `201` (user sees success regardless).
+- [ ] Vercel Analytics page-view event fires on load.
 
 ---
 
-## Open questions
+## Decisions log
 
-1. **Duplicate email** — Upsert (idempotent, no error shown to user) or surface a "you're already on the list" message?
-2. **Font** — Confirm Geist (Next.js default) or a specific typeface from the brand. The image uses a bold geometric sans.
-3. **Hero image usage rights** — Confirm this artwork is cleared for use on the page.
-4. **Success action** — Inline confirmation below the form, or navigate to `/thank-you`?
-5. **Analytics** — Any event tracking required in Phase 1?
-6. **Additional pages** — Does the Figma prototype show screens beyond the single landing page?
+| # | Question | Decision |
+|---|---|---|
+| 1 | Duplicate email | Upsert silently — `ON CONFLICT DO NOTHING`, always `201` |
+| 2 | Font | Geist (Next.js built-in) |
+| 3 | Hero image rights | Cleared for use |
+| 4 | Post-submit action | Inline confirmation (no navigation) |
+| 5 | Analytics | Vercel Analytics in Phase 1 |
+| 6 | Additional pages | No — single landing page only |
